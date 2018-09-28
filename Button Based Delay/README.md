@@ -1,12 +1,24 @@
 # Button Based Delay
-Now that you have begun to familiarize yourself with the TIMER modules, why don't we make an interesting change to our code from the last lab.
 
-## Task
-Setup your microcontroller to initially blink and LED at a rate of 10Hz upon restarting or powering up. Then utilizing one of the buttons on board, a user should be able to set the delay or blinking rate of the LED by holding down a button. The duration in which the button is depressed should then become the new rate at which the LED blinks. As previously stated, you most likely will want to take advantage of the fact that TIMER modules exist and see if you can let them do a bulk of the work for you.
 
-### Extra Work
-## Reset Button
-What is a piece of electronics without a reset button? Instead of relying on resetting your processor using the built in reset circuitry, why not instead use another button to reset the rate back to 10Hz.
 
-## Button Based Hertz
-Most likely using two buttons, what if instead of making a delay loop based on the time, the user could instead enter a mode where the number of times they pressed the button would become the number in Hz of the blinking rate? How do you think you would implement that with just one button?
+## MSP430G2ET
+Pinout:<br/>
+LED: Port 1.0, output<br/>
+Button:Port 1.3, pull down resistor<br/>
+Interrupt on Port 1.3, falling edge.<br/>
+
+Uses TimerA set as ACLK in up mode. CCR0 initally to 50000.
+
+
+## MSP430FR2311
+Pinout:<br/>
+LED: Port 1.0, output<br/>
+Button:Port 1.1, pull down resistor<br/>
+Interrupt on Port 1.3, falling edge.<br/>
+
+Uses TimerB set as ACLK in up mode. CCR0 initally to 50000.
+
+
+## How to Implement the Code
+The pinouts for the MSP430G2ET and MSP430FR2311 are found above. The code must match these pinouts in order to work correctly. The global interrupt has to be enabled and the watchdog timer has to be stopped. 
